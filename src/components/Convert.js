@@ -29,7 +29,6 @@ const Convert = ({ language, text }) => {
     };
 
     doTranslation();
-
   }, [language, debouncedText]);
 
   return(
