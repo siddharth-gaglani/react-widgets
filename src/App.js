@@ -1,25 +1,61 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+// import Accordion  from './components/Accordion';
+// import Search  from './components/Search';
+import Dropdown from './components/Dropdown';
 
-function App() {
+// const items = [
+//   {
+//     title: "What is react?",
+//     content: "React is a js framework"
+//   },
+//   {
+//     title: "Why use react?",
+//     content: "React is a favourite js library among software developers"
+//   },
+//   {
+//     title: "How do you use react?",
+//     content: "You use React by creating components"
+//   },
+// ];
+
+const options = [
+  {
+    label: "Color Red",
+    value: "red"
+  },
+  {
+    label: "Color Green",
+    value: "green"
+  },
+  {
+    label: "Shade of blue",
+    value: "blue"
+  },
+];
+
+
+
+// eslint-disable-next-line import/no-anonymous-default-export
+export default () => {
+
+  const [selected, setSelected] = useState(options[0]);
+  const [showDropdown, setShowDropdown] = useState(true);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <button
+        onClick={()=>setShowDropdown(!showDropdown)}
+      >
+      Toggle Dropdown
+      </button>
+      {
+        showDropdown ?
+        <Dropdown
+          selected={selected}
+          onSelectedChange={setSelected}
+          options={options}        
+        /> : null
+      }
     </div>
   );
-}
-
-export default App;
+};
